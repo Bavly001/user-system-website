@@ -1,0 +1,303 @@
+/*Global*/
+* {
+     margin: 0;
+     padding: 0;
+     scroll-behavior: smooth;
+     transition: 0.5s;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+     font-family: sans-serif;
+     -ms-overflow-style: none; /* IE and Edge */
+     scrollbar-width: none; /* Firefox */
+     background-color: #ededed;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+     color: #171717;
+}
+::-webkit-scrollbar,
+.none {
+     display: none;
+}
+.home-route,
+.employee-route,
+.list_employee {
+     min-height: 92vh;
+}
+.container {
+     margin: 0 140pt;
+}
+.white-color {
+     color: white;
+}
+.flex-center {
+     display: flex;
+     justify-content: center;
+     align-items: center;
+}
+.flex-column {
+     flex-direction: column;
+}
+/*-------------------------------------------------------------------------------*/
+/*Home-route*/
+
+/*Home-slider*/
+.home-route .slider {
+     height: 100vh;
+     width: 100%;
+}
+.home-route .slider-style0 {
+     background: rgb(78, 159, 61);
+     background: linear-gradient(
+          162deg,
+          rgba(78, 159, 61, 1) 0%,
+          rgba(30, 81, 40, 1) 45%
+     );
+}
+.home-route .slider-style1 {
+     background: rgb(51, 71, 86);
+     background: linear-gradient(
+          162deg,
+          rgba(51, 71, 86, 1) 0%,
+          rgba(8, 32, 50, 1) 37%
+     );
+}
+.home-route .slider-style2 {
+     background: rgb(20, 255, 236);
+     background: linear-gradient(
+          162deg,
+          rgba(20, 255, 236, 1) 0%,
+          rgba(13, 115, 119, 1) 37%
+     );
+}
+.home-route .slider-style3 {
+     background: rgb(149, 1, 1);
+     background: linear-gradient(
+          162deg,
+          rgba(149, 1, 1, 1) 0%,
+          rgba(61, 0, 0, 1) 37%
+     );
+}
+.title {
+     font-size: 40pt;
+     margin: 10pt 0;
+}
+.subtitle {
+     font-size: 20pt;
+     font-weight: lighter;
+}
+.slider .arrows {
+     width: 50%;
+     display: flex;
+     justify-content: space-between;
+}
+.circle-btn {
+     background-color: rgba(0, 0, 0, 0.343);
+     border: none;
+     border-radius: 50%;
+     width: 40px;
+     height: 40px;
+     font-size: 15pt;
+     cursor: pointer;
+     display: inline-flex;
+     justify-content: center;
+     align-items: center;
+}
+.circle-btn:hover {
+     background-color: rgba(0, 0, 0, 0.702);
+}
+.no-background-circle-btn {
+     background-color: transparent;
+     transform: translateY(60pt);
+}
+.no-background-circle-btn:hover {
+     background-color: transparent;
+     transform: translateY(67pt);
+     filter: drop-shadow(0px 0px 5px rgb(255, 255, 255));
+}
+
+/*Home-partitions*/
+.home-route .partition {
+     padding: 35pt 0;
+}
+.home-route .partition:last-child {
+     margin-bottom: 30pt;
+}
+.partition .circle-btn {
+     float: right;
+}
+.partition p {
+     text-align: justify;
+     margin-bottom: 5pt;
+}
+/*-------------------------------------------------------------------------------*/
+/*Add Employees*/
+.employee-route .employee-form,
+.employee-card {
+     /*Employee Card Route */
+     background-color: #171717;
+     height: 70vh;
+     width: 70vh;
+     border-bottom-right-radius: 100pt;
+     border-top-left-radius: 100pt;
+}
+.employee-form .form-field {
+     margin: 17pt 0;
+     padding: 3pt;
+     width: 45vh;
+     background-color: transparent;
+     border: none;
+     border-bottom: grey 1.5pt solid;
+}
+.employee-form .form-field:last-of-type {
+     background-color: grey;
+     padding: 7pt;
+     border: none;
+     border-radius: 15pt;
+     cursor: pointer;
+}
+.employee-form .form-field:focus {
+     outline: none;
+     border-bottom: white 1.5pt solid;
+}
+.employee-form .form-field::placeholder {
+     color: grey;
+}
+.employee-form input[type="number"]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+}
+.employee-form .form-field:last-of-type:hover {
+     color: grey;
+     background-color: white;
+}
+.employee-form .delete-btn {
+     text-decoration: underline;
+     cursor: pointer;
+}
+.employee-form .delete-btn:hover {
+     color: grey;
+}
+.employee-form .empty-field-waring,
+.employee-form .changes-saved {
+     margin-top: 10pt;
+     font-size: 10pt;
+     opacity: 0;
+}
+.employee-form .empty-field-waring {
+     color: red;
+}
+.employee-form .changes-saved {
+     color: greenyellow;
+}
+.employee-route .back-buttons {
+     display: flex;
+     justify-content: space-between;
+     width: 65vh;
+     margin-top: 20pt;
+}
+/*-------------------------------------------------------------------------------*/
+/*Employee Card*/
+.employee-card {
+     position: relative;
+     min-height: 50vh;
+     min-width: 50vh;
+     height: 50vh;
+     width: 50vh;
+     margin: 40pt;
+     overflow: hidden;
+}
+.employee-card .avatar {
+     font-size: 12vh;
+}
+.employee-card .card-data {
+     margin-bottom: 5pt;
+}
+.card-data p {
+     font-size: 14pt;
+     margin: 10pt 0;
+}
+.employee-card .card-buttons {
+     position: absolute;
+     top: 330px;
+     left: -12px;
+     width: 14vh;
+     padding: 12pt;
+     display: flex;
+     justify-content: space-between;
+     opacity: 0;
+     margin-left: 5pt;
+     z-index: 1;
+}
+.employee-card .white-glow {
+     position: absolute;
+     top: 335px;
+     left: -60px;
+     width: 25vh;
+     height: 20vh;
+     background-color: rgba(255, 255, 255, 0.524);
+     border-radius: 30pt;
+     opacity: 0;
+}
+.employee-card:hover {
+     box-shadow: black 5px 5px 25px;
+}
+.employee-card:hover .card-buttons,
+.employee-card:hover .white-glow {
+     opacity: 1;
+}
+
+/*-------------------------------------------------------------------------------*/
+/*Employee List*/
+.list .title{
+     width: 30%;
+     justify-content: space-around;
+}
+.list .list_employee {
+     width: 100%;
+     display: flex;
+     justify-content: space-around;
+     flex-wrap: wrap;
+}
+
+.list .list-search {
+     display: inline-flex;
+     width: 1200px;
+     max-width: 1200px;
+}
+
+.list-search .search-bar {
+     border: none;
+     flex-wrap: nowrap;
+     width: 80%;
+     padding: 5pt 15pt;
+}
+.list-search .search-bar:focus {
+     outline: none;
+}
+.list-search .search-bar:first-child {
+     width: 10%;
+     padding-left: 30pt;
+     border-right: grey 2pt solid;
+}
+
+/*-------------------------------------------------------------------------------*/
+/*Footer*/
+footer {
+     width: 100%;
+     height: 8vh;
+     background-color: #171717;
+}
+footer p {
+     font-size: 11pt;
+}
+footer p span {
+     font-weight: bold;
+     color: rgb(20, 255, 236);
+}

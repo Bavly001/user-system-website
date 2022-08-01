@@ -1,0 +1,46 @@
+* {
+     margin: 0;
+     padding: 0;
+}
+@keyframes rightToLeft {
+     from {
+          transform: translateX(0);
+     }
+     to {
+          transform: translateX(-100%);
+     }
+}
+.loader-in-work .page {
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 15;
+     transform: translateX(-100%);
+}
+.loader-not-work .page {
+     display: none;
+}
+.page {
+     width: 100%;
+     height: 100%;
+     position: absolute;
+}
+.white-page {
+     background-color: white;
+     animation: 3s rightToLeft;
+}
+.green-page {
+     background-color: green;
+     animation: 2.6s rightToLeft;
+}
+.blue-page {
+     background-color: blue;
+     animation: 2.2s rightToLeft;
+}
+.red-page {
+     background-color: red;
+     animation: 1.8s rightToLeft;
+}

@@ -3,6 +3,8 @@ import ApisFunctions from './apis/apis_functions';
 import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 import { TransitionGroup } from 'react-transition-group'
+import Loader from './Loader/loader';
+
 
 
 
@@ -42,6 +44,7 @@ class list_employee extends Component {
   render() {
     return (
       <div className="list flex-center flex-column">
+        <Loader/>
         <h1 className="title flex-center">Employees List
           <Link to={"/"} className='circle-btn white-color'><HiHome /></Link>
         </h1>

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 import { FiArrowLeft } from 'react-icons/fi';
+import Loader from './Loader/loader';
+
 
 // import axios from 'axios';
 
@@ -17,6 +19,7 @@ class add_employee extends Component {
   render() {
     return (
       <div className='employee-route employee-route flex-center flex-column'>
+        <Loader/>
         <form className='employee-form flex-center flex-column'>
           <h1 className='title white-color'>Add Employee</h1>
           <input

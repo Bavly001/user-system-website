@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { FiArrowLeft, FiArrowRight } from 'react-icons/fi';
 import { GoChevronDown } from 'react-icons/go';
 import { LoremIpsum } from 'react-lorem-ipsum';
+import Loader from './Loader/loader';
 
 
 class Home extends Component {
@@ -25,6 +26,7 @@ class Home extends Component {
     return (
 
       <div className='home-route' >
+        <Loader/>
         <div className={'slider flex-center flex-column slider-style' + this.state.index}>
           <div className='container'>
             <h2 className='subtitle white-color'>What you can de here ... ?</h2>

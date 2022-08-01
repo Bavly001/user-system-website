@@ -71,8 +71,7 @@ class list_employee extends Component {
           className="list_employee"
           component="div"
         >
-          {/* {new ApisFunctions().getAllUsers()} */}
-          < ApisFunctions />
+          {new ApisFunctions().getAllUsers()}
 
         </TransitionGroup>
       </div>

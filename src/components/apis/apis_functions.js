@@ -11,18 +11,19 @@ class apis_functions extends Component {
   }
 
   getAllUsers() {
-    return (
-      <div>
-        {axios.get(UserAPIs + "/all").map((employee, index) => (<EmployeeCard
-          key={index}
-          name={employee.name}
-          id={employee.id}
-          age={employee.age}
-          address={employee.address}
-          phoneNumber={employee.phoneNumber}
-        />))}
-      </div>
-    )
+    return axios.get(UserAPIs + "/all");
+    // return (
+    //   <div>
+    //     {axios.get(UserAPIs + "/all").map((employee, index) => (<EmployeeCard
+    //       key={index}
+    //       name={employee.name}
+    //       id={employee.id}
+    //       age={employee.age}
+    //       address={employee.address}
+    //       phoneNumber={employee.phoneNumber}
+    //     />))}
+    //   </div>
+    // )
   }
 
   updateUser(id, employee){

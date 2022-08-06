@@ -28,7 +28,7 @@ p {
 }
 .home-route,
 .employee-route,
-.list_employee {
+.list{
      min-height: 92vh;
 }
 .container {
@@ -186,6 +186,7 @@ p {
 }
 .employee-form .empty-field-waring,
 .employee-form .changes-saved {
+     transition: 0.5s;
      margin-top: 10pt;
      font-size: 10pt;
      opacity: 0;
@@ -255,18 +256,18 @@ p {
 
 /*-------------------------------------------------------------------------------*/
 /*Employee List*/
-.list .title{
+.list-header .title{
      width: 30%;
      justify-content: space-around;
 }
-.list .list_employee {
+.list-header .list_employee {
      width: 100%;
      display: flex;
      justify-content: space-around;
      flex-wrap: wrap;
 }
 
-.list .list-search {
+.list-header .list-search {
      display: inline-flex;
      width: 1200px;
      max-width: 1200px;

@@ -30,17 +30,17 @@
 }
 .white-page {
      background-color: white;
-     animation: 3s rightToLeft;
+     animation: 1.8s rightToLeft;
 }
 .green-page {
      background-color: green;
-     animation: 2.6s rightToLeft;
+     animation: 1.6s rightToLeft;
 }
 .blue-page {
      background-color: blue;
-     animation: 2.2s rightToLeft;
+     animation: 1.4s rightToLeft;
 }
 .red-page {
      background-color: red;
-     animation: 1.8s rightToLeft;
+     animation: 1.2s rightToLeft;
 }

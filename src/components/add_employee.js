@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 import { FiArrowLeft } from 'react-icons/fi';
 
@@ -12,8 +12,8 @@ import Loader from './Loader/loader';
 
 class add_employee extends Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       name: '',
@@ -23,29 +23,51 @@ class add_employee extends Component {
     }
   }
 
+  /*-------------------------------------------------------------------/Check validity function/-------------------------------------------------------------------*/
+  checkValidity = () => {
+    const name = this.state.name;
+    const age = this.state.age;
+    const address = this.state.address;
+    const phoneNumber = this.state.phoneNumber;
+
+    if (name === '' || age === '' || address === '' || phoneNumber === '') return false;
+    else if (!name.match(/ /g) || name.match(/ /g).length > 1 || name.indexOf(' ') <= 0 || /\d/.test(name)) return false;
+    else if (!/\d/.test(phoneNumber) || phoneNumber.includes(' ') || phoneNumber.length < 11) return false;
+    else return true;
+  }
+
   /*-------------------------------------------------------------------/Add employee function/-------------------------------------------------------------------*/
   addEmployee = (e) => {
-    e.preventDefault();
-    const employee_data = {
-      ...this.state,
-    };
-
-    APIsFunctions.addUser(employee_data)
-
-    this.setState({
-      name: '',
-      age: '',
-      address: '',
-      phoneNumber: ''
-    })
-
-    console.log("user added successfully");
     const message = document.getElementById('message');
-    message.innerHTML = 'Employee is added successfully';
-    message.className = 'changes-saved'
-    message.style.opacity = '1';
-    setInterval(() => { message.style.opacity = '0'; }, 5000);
+    e.preventDefault();
 
+    if (this.checkValidity()) {
+      const employee_data = {
+        ...this.state,
+      };
+
+      APIsFunctions.addUser(employee_data);
+
+      this.setState({
+        name: '',
+        age: '',
+        address: '',
+        phoneNumber: ''
+      })
+
+      console.log("user added successfully");
+      message.innerHTML = 'Employee is added successfully';
+      message.className = 'changes-saved'
+      message.style.opacity = '1';
+      setInterval(() => { message.style.opacity = '0'; }, 7000);
+    }
+    
+    else {
+      message.innerHTML = 'Please enter a valid data';
+      message.className = 'empty-field-waring'
+      message.style.opacity = '1';
+      setInterval(() => { message.style.opacity = '0'; }, 7000);
+    }
   }
 
   handleChange = (e) => {
@@ -64,9 +86,9 @@ class add_employee extends Component {
 
           <input
             type='text'
-            placeholder='Employee Name'
+            placeholder='Employee Name (First Name and Last Name only)'
             required
-            maxLength="14"
+            maxLength="25"
             name="name"
             autoComplete="off"
             className='form-field white-color'
@@ -118,7 +140,7 @@ class add_employee extends Component {
             className='form-field white-color'
           />
 
-          <p id='message' className='empty-field-waring'></p>
+          <p id='message'></p>
         </form>
         <div className='back-buttons'>
           <Link to={"/list-employees"} className='circle-btn white-color'><FiArrowLeft /></Link>

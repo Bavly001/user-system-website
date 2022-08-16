@@ -28,7 +28,7 @@ p {
 }
 .home-route,
 .employee-route,
-.list{
+.list {
      min-height: 92vh;
 }
 .container {
@@ -36,6 +36,9 @@ p {
 }
 .white-color {
      color: white;
+}
+.display-none{
+     display: none;
 }
 .flex-center {
      display: flex;
@@ -178,6 +181,7 @@ p {
      background-color: white;
 }
 .employee-form .delete-btn {
+     font-size: 15px;
      text-decoration: underline;
      cursor: pointer;
 }
@@ -256,8 +260,8 @@ p {
 
 /*-------------------------------------------------------------------------------*/
 /*Employee List*/
-.list-header .title{
-     width: 30%;
+.list-header .title {
+     width: 40%;
      justify-content: space-around;
 }
 .list-header .list_employee {
@@ -272,7 +276,9 @@ p {
      width: 1200px;
      max-width: 1200px;
 }
-
+.list .users-list {
+     flex-wrap: wrap;
+}
 .list-search .search-bar {
      border: none;
      flex-wrap: nowrap;
@@ -286,8 +292,11 @@ p {
      width: 10%;
      padding-left: 30pt;
      border-right: grey 2pt solid;
+     border-top-left-radius: 100pt;
 }
-
+.list-search .search-bar:last-child {
+     border-bottom-right-radius: 100pt;
+}
 /*-------------------------------------------------------------------------------*/
 /*Footer*/
 footer {

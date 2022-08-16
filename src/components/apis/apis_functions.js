@@ -12,8 +12,8 @@ class APIsFunctions {
     return axios.get(UserAPIs + "/all");
   }
 
-  updateUser(id, employee) {
-    axios.put(UserAPIs + "/" + id, employee);
+  updateUser(employee) {
+    axios.put(UserAPIs, employee);
   }
 
   delUser = (id) => {

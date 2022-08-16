@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 // import { TransitionGroup } from 'react-transition-group'
-
+import AddEmployee from './add_employee';
+import EditEmployee from './edit_employee';
 import EmployeeCard from './employee_card';
 import APIsFunctions from './apis/apis_functions';
 import Loader from './Loader/loader';
@@ -23,13 +24,12 @@ class list_employee extends Component {
   componentDidMount() {
     APIsFunctions.getAllUsers().then(res => { this.setState({ users: res.data }) });
   }
-  
-  /*-------------------------------------------------------------------/Component Keep Tracking Updates/-------------------------------------------------------------------*/
-  UNSAFE_componentWillUpdate() {
-    APIsFunctions.getAllUsers().then(res => { this.setState({ users: res.data }) });
-    return true;
-  }
 
+  /*-------------------------------------------------------------------/Keep Tracking Updates/-------------------------------------------------------------------*/
+  trackingUpdates = (array) => {
+    this.setState({ users: array });
+    console.log('done');
+  }
   /*-------------------------------------------------------------------/Start search functions/-------------------------------------------------------------------*/
   /*-----------------------Changing search type-----------------------*/
   changeType = (e) => {
@@ -62,7 +62,7 @@ class list_employee extends Component {
 
   render() {
     return (
-      <div className="list">
+      <div className="list flex-center flex-column">
         <Loader />
         <div className="list-header flex-center flex-column">
           <h1 className="title flex-center">Employees List
@@ -87,20 +87,25 @@ class list_employee extends Component {
 
 
 
-          <div>
-            {this.state.users.length > 0 ?
-              this.state.users.map((employee, index) => (<EmployeeCard
-                key={index}
-                name={employee.name}
-                id={employee.id}
-                age={employee.age}
-                address={employee.address}
-                phoneNumber={employee.phoneNumber}
-              />))
-              :
-              null
-            }
-          </div>
+        </div>
+        <div className='users-list flex-center'>
+          {this.state.users.length > 0 ?
+            this.state.users.map((employee, index) => (<EmployeeCard
+              key={index}
+              name={employee.name}
+              id={employee.id}
+              age={employee.age}
+              address={employee.address}
+              phoneNumber={employee.phoneNumber}
+              handleChange={this.trackingUpdates}
+            />))
+            :
+            null
+          }
+        </div>
+        <div className='display-none'>
+        <AddEmployee handleChange={this.trackingUpdates}/>
+        <EditEmployee handleChange={this.trackingUpdates}/>
         </div>
       </div>
     )

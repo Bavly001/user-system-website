@@ -40,139 +40,17 @@ class edit_employee extends Component {
   }
 
   /*-------------------------------------------------------------------/Get employee/-------------------------------------------------------------------*/
-  // Get employee ID
-
-  // shouldComponentUpdate(nextProps, nextState) {
-  //   console.log(nextProps)
-  //   console.log(nextState)
-  //   return true;
-  // }
-
-
-  // // UNSAFE_componentWillReceiveProps(nextProps) {
-  // //   console.log(nextProps.edit_name);
-  // //   console.log(nextProps.edit_id);
-  // //   console.log(nextProps.edit_age);
-  // //   console.log(nextProps.edit_address);
-  // //   console.log(nextProps.edit_phoneNumber);
-
-
-  // //   if (nextProps.edit_id !== undefined) {
-  // //     axios
-  // //       .get(UserAPIs + '/' + nextProps.edit_id)
-  // //       // .then(res => this.setState({
-  // //       //   name: res.data.name,
-  // //       //   id: nextProps.edit_id,
-  // //       //   age: res.data.age,
-  // //       //   address: res.data.address,
-  // //       //   phoneNumber: res.data.phoneNumber
-  // //       // }))
-  // //     this.setState({
-  // //       name: nextProps.edit_name,
-  // //       id: nextProps.edit_id,
-  // //       age: nextProps.edit_age,
-  // //       address: nextProps.edit_address,
-  // //       phoneNumber: nextProps.edit_phoneNumber
-  // //     })
-  // //   }
-  // //   else console.log('waiting to edit ...')
-
-  // //   // axios.get(APIsFunctions + '/' + 105).then(res => console.log(res));
-
-
-  // //   // if (this.props !== undefined) {
-  // //   //   axios
-  // //   //   .get(UserAPIs + '/' + nextProps.edit_id)
-  // //   //   .then(res => this.setState({
-  // //   //     name: res.data.name,
-  // //   //     id:nextProps.edit_id,
-  // //   //     age: res.data.age,
-  // //   //     address: res.data.address,
-  // //   //     phoneNumber: res.data.phoneNumber
-  // //   //   }))
-  // //   // }
-  // //   // else console.log('waiting for edit');
-  // //   // axios
-  // //   //   .get(UserAPIs + '/' + nextProps.edit_id)
-  // //   //   .then(res => this.setState({
-  // //   //     name:res.data.name,
-  // //   //     id:nextProps.edit_id,
-  // //   //     age:res.data.age,
-  // //   //     address:res.data.address,
-  // //   //     phoneNumber:res.data.phoneNumber
-  // //   //   }))
-  // // }
-
-  // // Get employee data
-  // // shouldComponentUpdate(nextProps) {
-  // //   console.log(nextProps.edit_id);
-  // //   return true;
-  // // }
-
-  // // UNSAFE_componentWillMount() {
-  // //   console.log(this.state);
-  // // }
-
-  // // componentDidUpdate() {
-  // //   console.log(this.props.edit_id);
-  // //   console.log(this.state);
-  // // }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   console.log(this.props.edit_id);
-  //   console.log(this.state);
-  //   prevState = this.state;
-  //   console.log(prevState)
-  //   // console.log(prevState);
-  //   // this.setState({
-  //   //   name: this.state.name,
-  //   //     id: this.state.id,
-  //   //     age: this.state.age,
-  //   //     address: this.state.address,
-  //   //     phoneNumber: this.state.phoneNumber
-  //   // })
-
-  // }
-  // // static getDerivedStateFromProps(props, state) {
-  // //   if (props.edit_id !== state.id){
-  // //     return {
-  // //       id: props.edit_id,
-  // //       name:props.edit_name
-  // //     }
-  // //   }
-
-  // //   return null;
-  // // }
-
-  // // UNSAFE_componentWillMount() {
-  //   //   axios
-  //   //     .get(UserAPIs + '/' + this.state.id)
-  //   //     .then(res => this.setState({
-  //     //       name: res.data.name,
-  //     //       age: res.data.age,
-  //     //       address: res.data.address,
-  //     //       phoneNumber: res.data.phoneNumber
-  //     //     }))
-  //     // }
-  // shouldComponentUpdate(nextProps, nextState){
-  //   console.log(nextProps);
-  //   console.log(nextState);
-  //   // this.setState({id: nextProps.id})
-
-  //   // console.log(nextState.id);
-  //   if (nextState.id === nextProps.edit_id) return false;
-  //   else return true;
-  // }
-
-
-  static getDerivedStateFromProps(props, state) {
-    console.log(props.edit_id)
-    if (props.edit_id === state.id) return null;
-    return {
-      id: props.edit_id
-    };
-
+  // Get employee
+  getUser = (name, id, age, address, phoneNumber) => {
+    this.setState({
+      name: name,
+      id: id,
+      age: age,
+      address: address,
+      phoneNumber: phoneNumber
+    })
   }
+
 
   /*-------------------------------------------------------------------/Edit employee function/-------------------------------------------------------------------*/
   addEmployee = (e) => {

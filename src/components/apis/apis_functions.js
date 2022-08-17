@@ -5,7 +5,7 @@ const UserAPIs = "http://localhost:8080/api/user"
 class APIsFunctions {
 
   addUser(employee) {
-    axios.post(UserAPIs, employee);
+    return axios.post(UserAPIs, employee);
   }
 
   getAllUsers() {
@@ -13,11 +13,11 @@ class APIsFunctions {
   }
 
   updateUser(employee) {
-    axios.put(UserAPIs, employee);
+    return axios.put(UserAPIs, employee);
   }
 
   delUser = (id) => {
-    axios.delete(UserAPIs + "/" + id)
+    return axios.delete(UserAPIs + "/" + id)
   }
 }
 

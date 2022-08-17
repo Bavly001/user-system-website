@@ -3,10 +3,16 @@ import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 // import { TransitionGroup } from 'react-transition-group'
 import AddEmployee from './add_employee';
-import EditEmployee from './edit_employee';
-import EmployeeCard from './employee_card';
 import APIsFunctions from './apis/apis_functions';
 import Loader from './Loader/loader';
+import EditEmployee from './edit_employee';
+
+
+import { FaUserCircle } from 'react-icons/fa';
+import { MdModeEditOutline, MdDelete } from 'react-icons/md';
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
+
 
 
 
@@ -16,13 +22,15 @@ class list_employee extends Component {
     this.state = {
       type: 'number',
       search_by: '( id )',
-      users: []
+      users: [],
     }
   }
 
   /*-------------------------------------------------------------------/Get All Users/-------------------------------------------------------------------*/
   componentDidMount() {
-    APIsFunctions.getAllUsers().then(res => { this.setState({ users: res.data }) });
+    APIsFunctions.getAllUsers().then(res => this.setState({ users: res.data }));
+    // APIsFunctions.getAllUsers().then(res => console.log(res.data));
+    // APIsFunctions.getAllUsers().then(res => console.log(this.state.users));
   }
 
   /*-------------------------------------------------------------------/Keep Tracking Updates/-------------------------------------------------------------------*/
@@ -59,6 +67,34 @@ class list_employee extends Component {
   }
   /*-------------------------------------------------------------------/End search functions/-------------------------------------------------------------------*/
 
+  /*-----------------------Delete user function-----------------------*/
+  deleteUser = (id, name) => {
+    confirmAlert({
+      title: `Delete User`,
+      message: `Are you sure you want to delete ${name}.`,
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => {
+            APIsFunctions.delUser(id)
+              .then(() => {
+                return APIsFunctions.getAllUsers().then(
+                  res => {
+                    this.setState({
+                      users: res.data
+                    });
+                  }
+                )
+              });
+          }
+        },
+        {
+          label: 'No'
+        }
+      ]
+    });
+  }
+
 
   render() {
     return (
@@ -90,22 +126,42 @@ class list_employee extends Component {
         </div>
         <div className='users-list flex-center'>
           {this.state.users.length > 0 ?
-            this.state.users.map((employee, index) => (<EmployeeCard
-              key={index}
-              name={employee.name}
-              id={employee.id}
-              age={employee.age}
-              address={employee.address}
-              phoneNumber={employee.phoneNumber}
-              handleChange={this.trackingUpdates}
-            />))
+            this.state.users.map((employee, index) => (
+              <div className="employee-card-container" key={index}>
+                <div className="employee-card flex-center flex-column">
+                  <FaUserCircle className='avatar white-color' />
+                  {(
+                    <div key={index} className='card-data'>
+                      <p className='white-color'>Name: {employee.name}</p>
+                      <p className='white-color'>Id:{employee.id}</p>
+                      <p className='white-color'>Age: {employee.age}</p>
+                      <p className='white-color'>Address: {employee.address}</p>
+                      <p className='white-color'>Phone no.:{employee.phoneNumber}</p>
+                    </div>
+                  )}
+                  <div className='card-buttons'>
+                    <Link role="button" to="/edit-employee" className='circle-btn white-color'
+                      onClickCapture={() => new EditEmployee().getUser(
+                        employee.name,
+                        employee.id,
+                        employee.age,
+                        employee.address,
+                        employee.phoneNumber
+                      )}
+                    >
+                      <MdModeEditOutline />
+                    </Link>
+
+
+                    <button className='circle-btn white-color' onClickCapture={() => this.deleteUser(employee.id, employee.name)}><MdDelete /></button>
+                  </div>
+                  <div className='white-glow' />
+                </div>
+              </div >
+            ))
             :
             null
           }
-        </div>
-        <div className='display-none'>
-        <AddEmployee handleChange={this.trackingUpdates}/>
-        <EditEmployee handleChange={this.trackingUpdates}/>
         </div>
       </div>
     )

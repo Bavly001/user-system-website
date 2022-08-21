@@ -37,7 +37,7 @@ p {
 .white-color {
      color: white;
 }
-.display-none{
+.display-none {
      display: none;
 }
 .flex-center {
@@ -141,7 +141,7 @@ p {
      margin-bottom: 5pt;
 }
 /*-------------------------------------------------------------------------------*/
-/*Add Employees*/
+/*Add Employees & Edit Employees*/
 .employee-route .employee-form,
 .employee-card {
      /*Employee Card Route */
@@ -207,6 +207,29 @@ p {
      width: 65vh;
      margin-top: 20pt;
 }
+@keyframes from0to1 {
+     from{
+          opacity: 0;
+     }
+     to {
+          opacity: 1;
+     }
+}
+.absolute-visible {
+     position: fixed;
+     top: 0;
+     left: 0;
+     background-color: #ededed;
+     width: 100%;
+     height: 100%;
+     display: block;
+     overflow: hidden;
+     z-index: 40;
+     animation: from0to1 0.5s;
+}
+.absolute-nonvisible {
+     display: none;
+}
 /*-------------------------------------------------------------------------------*/
 /*Employee Card*/
 .employee-card {
@@ -260,6 +283,9 @@ p {
 
 /*-------------------------------------------------------------------------------*/
 /*Employee List*/
+.list {
+     position: relative;
+}
 .list-header .title {
      width: 40%;
      justify-content: space-around;
@@ -303,6 +329,7 @@ footer {
      width: 100%;
      height: 8vh;
      background-color: #171717;
+     z-index: 60;
 }
 footer p {
      font-size: 11pt;

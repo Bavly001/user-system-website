@@ -126,7 +126,7 @@ class list_employee extends Component {
           component='div'
         >
           {this.state.users.length > 0 ?
-            this.state.users.map((employee, index) => (
+            this.state.users.sort((a, b) => a.id - b.id).map((employee, index) => (
               <CSSTransition
                 className="employee-card-container"
                 key={index}
@@ -142,7 +142,7 @@ class list_employee extends Component {
                         <p className='white-color'>Id:{employee.id}</p>
                         <p className='white-color'>Age: {employee.age}</p>
                         <p className='white-color'>Address: {employee.address}</p>
-                        <p className='white-color'>Phone no.:{employee.phoneNumber}</p>
+                        <p className='white-color'>Phone no: {employee.phoneNumber}</p>
                       </div>
                     )}
                     <div className='card-buttons'>

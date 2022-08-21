@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
-// import { TransitionGroup } from 'react-transition-group'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
 
 
 import APIsFunctions from './apis/apis_functions';
@@ -121,50 +121,60 @@ class list_employee extends Component {
 
 
         </div>
-        <div className='users-list flex-center'>
+        <TransitionGroup
+          className='users-list flex-center'
+          component='div'
+        >
           {this.state.users.length > 0 ?
             this.state.users.map((employee, index) => (
-              <div className="employee-card-container" key={index}>
-                <div className="employee-card flex-center flex-column">
-                  <FaUserCircle className='avatar white-color' />
-                  {(
-                    <div key={index} className='card-data'>
-                      <p className='white-color'>Name: {employee.name}</p>
-                      <p className='white-color'>Id:{employee.id}</p>
-                      <p className='white-color'>Age: {employee.age}</p>
-                      <p className='white-color'>Address: {employee.address}</p>
-                      <p className='white-color'>Phone no.:{employee.phoneNumber}</p>
-                    </div>
-                  )}
-                  <div className='card-buttons'>
-                    <button
-                      onClickCapture={
-                        () => {
-                          this.setState({
-                            name: employee.name,
-                            id: employee.id,
-                            age: employee.age,
-                            address: employee.address,
-                            phoneNumber: employee.phoneNumber,
-                            visible: true,
-                          })
+              <CSSTransition
+                className="employee-card-container"
+                key={index}
+                timeout={1000}
+              >
+
+                <div className="employee-card-container">
+                  <div className="employee-card flex-center flex-column">
+                    <FaUserCircle className='avatar white-color' />
+                    {(
+                      <div key={index} className='card-data'>
+                        <p className='white-color'>Name: {employee.name}</p>
+                        <p className='white-color'>Id:{employee.id}</p>
+                        <p className='white-color'>Age: {employee.age}</p>
+                        <p className='white-color'>Address: {employee.address}</p>
+                        <p className='white-color'>Phone no.:{employee.phoneNumber}</p>
+                      </div>
+                    )}
+                    <div className='card-buttons'>
+                      <button
+                        onClickCapture={
+                          () => {
+                            this.setState({
+                              name: employee.name,
+                              id: employee.id,
+                              age: employee.age,
+                              address: employee.address,
+                              phoneNumber: employee.phoneNumber,
+                              visible: true,
+                            })
+                          }
                         }
-                      }
-                      className='circle-btn white-color'>
-                      <MdModeEditOutline />
-                    </button>
+                        className='circle-btn white-color'>
+                        <MdModeEditOutline />
+                      </button>
 
 
-                    <button className='circle-btn white-color' onClickCapture={() => this.deleteUser(employee.id, employee.name)}><MdDelete /></button>
+                      <button className='circle-btn white-color' onClickCapture={() => this.deleteUser(employee.id, employee.name)}><MdDelete /></button>
+                    </div>
+                    <div className='white-glow' />
                   </div>
-                  <div className='white-glow' />
-                </div>
-              </div >
+                </div >
+              </CSSTransition>
             ))
             :
             null
           }
-        </div>
+        </TransitionGroup>
         <EditEmployee
           name={this.state.name}
           id={this.state.id}

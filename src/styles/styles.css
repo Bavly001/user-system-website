@@ -208,7 +208,7 @@ p {
      margin-top: 20pt;
 }
 @keyframes from0to1 {
-     from{
+     from {
           opacity: 0;
      }
      to {
@@ -278,6 +278,14 @@ p {
 }
 .employee-card:hover .card-buttons,
 .employee-card:hover .white-glow {
+     opacity: 1;
+}
+.exit,
+.enter-active {
+     transform: translateX(-100%);
+     opacity: 0;
+}
+.enter-done {
      opacity: 1;
 }
 

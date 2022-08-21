@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome } from 'react-icons/hi';
 // import { TransitionGroup } from 'react-transition-group'
-// import AddEmployee from './add_employee';
+
+
 import APIsFunctions from './apis/apis_functions';
 import Loader from './Loader/loader';
 import EditEmployee from './edit_employee';
@@ -100,7 +101,6 @@ class list_employee extends Component {
   render() {
     return (
       <div className="list flex-center flex-column">
-        {console.log(this.state)}
         <Loader />
         <div className="list-header flex-center flex-column">
           <h1 className="title flex-center">Employees List
@@ -170,7 +170,14 @@ class list_employee extends Component {
             null
           }
         </div>
-        <EditEmployee name={this.state.name} id={this.state.id} age={this.state.age} address={this.state.address} phoneNumber={this.state.phoneNumber} className={`absolute-${this.state.visible ? 'visible' : 'nonvisible'}`} />
+        <EditEmployee
+          name={this.state.name}
+          id={this.state.id}
+          age={this.state.age}
+          address={this.state.address}
+          phoneNumber={this.state.phoneNumber}
+          className={`absolute-${this.state.visible ? 'visible' : 'nonvisible'}`}
+        />
       </div>
     )
   }

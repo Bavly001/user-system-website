@@ -36,11 +36,6 @@ class list_employee extends Component {
     APIsFunctions.getAllUsers().then(res => this.setState({ users: res.data }));
   }
 
-  /*-------------------------------------------------------------------/Keep Tracking Updates/-------------------------------------------------------------------*/
-  trackingUpdates = (array) => {
-    this.setState({ users: array });
-    console.log('done');
-  }
   /*-------------------------------------------------------------------/Start search functions/-------------------------------------------------------------------*/
   /*-----------------------Changing search type-----------------------*/
   changeType = (e) => {

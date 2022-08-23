@@ -49,7 +49,7 @@ class list_employee extends Component {
     document.querySelectorAll('.employee-card-container').forEach((employeeCard) => {
       const search_term = e.target.value.toLowerCase();
       const employee_name = '' + employeeCard.querySelector('.employee-card').querySelector('.card-data').querySelector("p:first-child").innerHTML.replace("Name: ", '').toLowerCase();
-      const employee_id = '' + employeeCard.querySelector('.employee-card').querySelector('.card-data').querySelector("p:nth-child(3)").innerHTML.replace("Id: ", '');
+      const employee_id = '' + employeeCard.querySelector('.employee-card').querySelector('.card-data').querySelector("p:nth-child(2)").innerHTML.replace("Id: ", '');
 
 
       if (this.state.type === 'text') {
